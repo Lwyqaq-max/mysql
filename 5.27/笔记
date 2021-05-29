@@ -1,0 +1,9 @@
+sort    &引用
+sort 排序按照首字母a-z排序
+array_reverse  顺序颠倒 返回新数组
+shuffle 返回bool值 返回原数组       打乱数组
+in_array  检查数组中是否存在某个值  
+array_rand  取随机数  返回的是int  array string 
+array_meigr   合并一个或多个数组 返回新数组
+array_column   取出数组中对应的参数
+array_values   返回数组中所有的值
