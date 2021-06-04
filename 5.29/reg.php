@@ -13,18 +13,11 @@
 
 
     //使用mysql连接数据库
-    $host = '127.0.0.1';        //mysql的主机地址
-    $user = 'root';             //数据库的用户名
-    $pass = 'root';             //数据库密码
-    $db  = 'php2102';           //使用的数据库
-
-    $link = new mysqli($host,$user,$pass,$db);
+    include "include.php";
 
     $sql = "insert into php5 (username,mobile,email,pass1,age)values('{$username}','{$mobile}','{$email}','{$upass}','{$age}')";
 
     $stmt = mysqli_prepare($link,$sql);
-
-
     $result = mysqli_stmt_execute($stmt);
 
     if($result){

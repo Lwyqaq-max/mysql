@@ -2,11 +2,7 @@
     //接受form表单数据
     echo '<pre>';print_r($_POST);echo '</pre>';
     // 使用mysqli连接MySQL
-    $host = "127.0.0.1";   //主机地址
-    $user = "root";         //数据库的用户名
-    $pass = "root";        //数据库密码
-    $db = "php2102";       //使用的数据库
-    $link = new mysqli($host,$user,$pass,$db);   //连接数据库
+    include "include.php";
     $username = trim($_POST['uname']);      //处理变量
     $mobile = trim($_POST['mobile']);        //处理变量
     $email = trim($_POST['email']);          //处理变量

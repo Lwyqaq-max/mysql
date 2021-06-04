@@ -1,38 +1,58 @@
 <?php
+      session_start();                  //开启会话
+
       $value = trim($_POST['u']);         //可以是 username、email、mobile
-      $upass = trim($_POST['pass']);
-  
-      $host = "127.0.0.1";        // Mysql的主机地址
-      $user = 'root';             //数据库的用户名
-      $pass = 'root';        // 数据库密码
-      $db = "php2102";            //使用的数据库
-  
+      $upass = trim($_POST['pass']);       //接收密码
 
-      $link = new mysqli($host, $user, $pass, $db);
-
-
-      $sql = "select * from users where username='{$value}' or email='{$value}' or mobile='{$value}'";
+        include "include.php";  //连接数据库
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        //sql语句  执行查找php4里面 的username email mobile
+      $sql = "select * from php4 where username='{$value}' or email='{$value}' or mobile='{$value}'";
     //   echo $sql ;echo '<br>';
 
-
+    //查询数据库
     $result = mysqli_query($link,$sql);
-
-    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC); 
-    
+    //从￥result结果集中取得所有行为的关联数组
+    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                                //输出方式
   
-
+    //如果$rows为空
     if(empty($rows)){
-        die('查无此人');
+        header('Refresh:1; url=./login.html');
+        die('查无此人');   //停止运行  然后执行查无此人
     }
- 
+
     // 用户信息$rows[0]
- 
     // 验证密码 password_verify
-    if($upass == $rows[0]['password']){
-        echo '登陆成功';
+    //判断密码是否与改密码的哈希值匹配
+    if(password_verify($upass, $rows[0]['password'])){   //返回的是 true  或   false
+        echo '登陆成功,欢迎来到您的主页';   //如果是true  则 echo 一个 登录成功
+        echo "<br>";
+        echo "正在跳转至您的个人中心";echo "<br>";
         //更新一下最后一次登录时间
-        // $now = time();
-        // $sql = "update users set last_login_time={$now} where userid={$rows[0]['userid']}";      
+        $now = time();   //时间戳
+        //sql语句    更新一下最后一次登录时间是时间戳    是userid
+        $sql = "update users set last_login_time={$now} where userid={$rows[0]['userid']}";   //
+        $_SESSION['username']=$rows[0]['username'];   //会话数组 里面 的username  等于
+        setcookie('userid',$rows[0]['userid']);  //设置cookie 名字是 userid   value是$row[0]["userid"]
+        var_dump(setcookie('userid',$rows[0]['userid']));
+        header('Refresh:2;url="./my.php"');  //跳转
+         $uid = $rows[0]["userid"];
+         $login_time = $now;   //最后一次登陆时间
+         $login_ip = $_SERVER['REMOTE_ADDR'];
+         $ua = $_SERVER['HTTP_USER_AGENT'];
+         $sql = "insert into login_history(uid,login_time,login_ip,ua)
+         values('{$uid}','{$login_time}','{$login_ip}','{$ua}')";;
+         $stmt = mysqli_prepare($link,$sql);//准备阶段
+            $result = mysqli_stmt_execute($stmt); //执行#$stmt
     }else{
         echo '登陆失败';
+        header('Refresh:1; url=./login.html');
     }
+echo '<pre>';
+print_r($_COOKIE);
+echo '</pre>';
+
+?>
