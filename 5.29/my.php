@@ -22,7 +22,6 @@
      $add = mysqli_fetch_all($arr,MYSQLI_ASSOC);
      ?>
 
-
     <!doctype html>
     <html lang="en">
     <head>

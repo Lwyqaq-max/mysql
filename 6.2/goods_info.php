@@ -53,17 +53,18 @@
 
 
             //7
-//        $sql = "select money_paid from p_order_info where money_paid order by goods_amount desc limit 10 ";
-//        $result = mysqli_query($link,$sql);
-//        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-//        echo '<pre>';
-//        print_r($rows);
-//        echo '</pre>';
+        $sql = "select money_paid from p_order_info where money_paid order by goods_amount desc limit 10 ";
+        $result = mysqli_query($link,$sql);
+        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+        echo '<pre>';
+        print_r($rows);
+        echo '</pre>';
+
 
 //9 查找 order_info 表中 money_paid 大于等于 5000 并且 小于 等于 6000 的记录（两种写法）
 // #升序
 //        $sql = "select money_paid from p_order_info where goods_amount <= 6000 and goods_amount > 5000 order by goods_amount ";
-//            $sql = "select  money_paid from p_order_info where goods_amount BETWEEN 5000 and 6000 order by goods_amount desc ";
+//        $sql = "select  money_paid from p_order_info where goods_amount BETWEEN 5000 and 6000 order by goods_amount desc ";
 //            $result = mysqli_query($link,$sql);
 //            $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
 //            echo '<pre>';
@@ -141,12 +142,27 @@
 //	    使用函数：FROM_UNIXTIME(),YEAR(),MONTH(),DAY()
 //		FROM_UNIXTIME(1402848000);		//函数参数为 unix时间戳，运算结果  Y-M-D H:i:S
 //		YEAR(),MONTH(),DAY()	// 函数参数格式 “2014-06-15 02:32:39”
-        $sql = " select add_time from p_order_info where = 1402848000";
-        $result = mysqli_query($link,$sql);
-        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-        echo '<pre>';
-        print_r($rows);
-        echo '</pre>';
+//        $sql = " select add_time from p_order_info where = 1402848000";
+//        $result = mysqli_query($link,$sql);
+//        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+//        echo '<pre>';
+//        print_r($rows);
+//        echo '</pre>';
+
+//19
+//         $sql = "select a.order_id,a.add_time,a.money_paid,b.user_id,b.user_name,b.reg_time from p_order_info as a ,p_users as b where a.user_id = b.user_id order by add_time desc limit 10";
+//        $result = mysqli_query($link,$sql);
+//        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+//        $aa = count($rows);
+//        for($i=0;$i<$aa;$i++){
+//            $cc = date("Y-m-d H:i:s",$rows[$i]['reg_time']);
+//            echo $cc;echo '<br>';
+//        }
+//        echo '<pre>';
+//        print_r($rows);
+//        echo '</pre>';
+
+
 
 
 //21、根据 订单商品表 （order_goods）统计卖的最多的前10种商品，及商品信息（需联表goods）
@@ -154,12 +170,12 @@
 //			goods_id: 商品ID
 //			num:		卖出的数量
 //			total:		总共卖了多少钱（order_goods.goods_price
-//            $sql = "select goods_number,goods_id,shop_price,sale_num  from p_goods order by goods_number desc limit 20";
-//            $result = mysqli_query($link,$sql);
-//            $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-//            echo '<pre>';
-//            print_r($rows);
-//            echo '</pre>';
+            $sql = "select goods_number,goods_id,shop_price,sale_num  from p_goods order by goods_number desc limit 10";
+            $result = mysqli_query($link,$sql);
+            $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+            echo '<pre>';
+            print_r($rows);
+            echo '</pre>';
          //22统计订单表中所有已支付订单的总金额
 //        $sql = "select sum(money_paid) from p_order_info";
 //        $result = mysqli_query($link,$sql);

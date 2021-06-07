@@ -17,7 +17,8 @@
     //从￥result结果集中取得所有行为的关联数组
     $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
                                                 //输出方式
-  
+
+
     //如果$rows为空
     if(empty($rows)){
         header('Refresh:1; url=./login.html');
@@ -46,7 +47,7 @@
          $sql = "insert into login_history(uid,login_time,login_ip,ua)
          values('{$uid}','{$login_time}','{$login_ip}','{$ua}')";;
          $stmt = mysqli_prepare($link,$sql);//准备阶段
-            $result = mysqli_stmt_execute($stmt); //执行#$stmt
+        $result = mysqli_stmt_execute($stmt); //执行#$stmt
     }else{
         echo '登陆失败';
         header('Refresh:1; url=./login.html');

@@ -2,10 +2,10 @@
     $arr = ['zhangsan','lisi','baby','mike','abc','john','jack','zhaoliu'];
     //  var_dump(array_reverse($arr));
     
-    // sort($arr);
-    // echo '<pre>';
-    // print_r($arr);
-    // echo '</pre>';
+    sort($arr);
+// echo '<pre>';
+// print_r($arr);
+// echo '</pre>';
 
     //  $arr = [
     //      ["name"=>"zhangsan","age"=>"11","email"=>"zhangsan@qq.com"],

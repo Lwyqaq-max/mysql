@@ -43,4 +43,4 @@
         // echo str_shuffle($str);
         // echo str_split($str);
         // var_dump(str_split($str)); //将字符串转为数组
-        var_dump(implode($arr))
+//        var_dump(implode($arr));
