@@ -1,9 +1,9 @@
 <?php
     $arr = $_POST;
-    $name = "root";
-    $pass = "root";
-    $host = "127.0.0.1";
-    $db = "goods";
+$name = "root";
+$pass = "root";
+$host = "127.0.0.1";
+$db = "goods";
     $link = new mysqli($host,$name,$pass,$db);
 //    $sql = "select p_order_info.order_id,p_order_info.goods_amount,p_order_info.add_time,p_order_goods.goods_name,p_order_goods.order_id from
 //    p_order_info,p_order_goods where p_order_info.order_id = p_order_goods.order_id and p_order_goods.order_id in(78010,78014)";

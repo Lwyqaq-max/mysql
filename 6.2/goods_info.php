@@ -7,24 +7,27 @@
 
 //    $sql = " select * from p_order_info where order_sn = 2020042321284 or order_sn = 2020042369891";   //1
 
-//    $sql = " select * from p_order_info where user_id = 1116";    //2
-//    $result = mysqli_query($link,$sql);
-//    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-//    $len = count($rows);
-//    $a = $rows[0]['shipping_time'];
-//    $b = $rows[1]['shipping_time'];
-//    $c = $rows[2]['shipping_time'];
-//    $d = $rows[3]['shipping_time'];
-//    $e = $rows[4]['shipping_time'];
-//    $f = $rows[5]['shipping_time'];
-//    $aa =   explode('-',$a);
-//    $bb =   explode('-',$b);
-//    $cc =   explode('-',$c);
-//    $dd =   explode('-',$d);
-//    $ee =   explode('-',$e);
-//    $ff =   explode('-',$f);
-//    $arr =  array_merge($aa,$bb,$cc,$dd,$ee,$ff);
-//    $arr = rsort($arr);
+    $sql = " select * from p_order_info where user_id = 1116";    //2
+    $result = mysqli_query($link,$sql);
+    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+echo '<pre>';
+print_r($rows);
+echo '</pre>';
+    $len = count($rows);
+    $a = $rows[0]['shipping_time'];
+    $b = $rows[1]['shipping_time'];
+    $c = $rows[2]['shipping_time'];
+    $d = $rows[3]['shipping_time'];
+    $e = $rows[4]['shipping_time'];
+    $f = $rows[5]['shipping_time'];
+    $aa =   explode('-',$a);
+    $bb =   explode('-',$b);
+    $cc =   explode('-',$c);
+    $dd =   explode('-',$d);
+    $ee =   explode('-',$e);
+    $ff =   explode('-',$f);
+    $arr =  array_merge($aa,$bb,$cc,$dd,$ee,$ff);
+    $arr = rsort($arr);
 
 //    $sql = "select * from p_goods where goods_sn = 'DT001341'";    //3
 //    $result = mysqli_query($link,$sql);
@@ -53,12 +56,12 @@
 
 
             //7
-        $sql = "select money_paid from p_order_info where money_paid order by goods_amount desc limit 10 ";
-        $result = mysqli_query($link,$sql);
-        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-        echo '<pre>';
-        print_r($rows);
-        echo '</pre>';
+//        $sql = "select money_paid from p_order_info where money_paid order by goods_amount desc limit 10 ";
+//        $result = mysqli_query($link,$sql);
+//        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+//        echo '<pre>';
+//        print_r($rows);
+//        echo '</pre>';
 
 
 //9 查找 order_info 表中 money_paid 大于等于 5000 并且 小于 等于 6000 的记录（两种写法）
@@ -170,12 +173,12 @@
 //			goods_id: 商品ID
 //			num:		卖出的数量
 //			total:		总共卖了多少钱（order_goods.goods_price
-            $sql = "select goods_number,goods_id,shop_price,sale_num  from p_goods order by goods_number desc limit 10";
-            $result = mysqli_query($link,$sql);
-            $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-            echo '<pre>';
-            print_r($rows);
-            echo '</pre>';
+//            $sql = "select goods_number,goods_id,shop_price,sale_num  from p_goods order by goods_number desc limit 10";
+//            $result = mysqli_query($link,$sql);
+//            $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+//            echo '<pre>';
+//            print_r($rows);
+//            echo '</pre>';
          //22统计订单表中所有已支付订单的总金额
 //        $sql = "select sum(money_paid) from p_order_info";
 //        $result = mysqli_query($link,$sql);

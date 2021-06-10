@@ -17,9 +17,8 @@
     $cid = $_COOKIE['userid'];
     $sql = "select * from login_history where uid = {$cid}";
     $arr = mysqli_query($link,$sql);
-
-
      $add = mysqli_fetch_all($arr,MYSQLI_ASSOC);
+     $userid = _GET['id'];
      ?>
 
     <!doctype html>

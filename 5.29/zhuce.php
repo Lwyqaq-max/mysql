@@ -22,7 +22,6 @@
 
         $sql1 = "select * from php4 where username=’{$username}‘";
         $query = mysqli_query($link,$sql1);
-
         $stmt = mysqli_prepare($link,$sql);//准备阶段
         $result = mysqli_stmt_execute($stmt);   //执行准备阶段
 

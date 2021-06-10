@@ -13,8 +13,7 @@
     $link = new mysqli($host,$name,$pass,$db);
 
     $sql = "select * from p_goods where goods_id = '{$userid}'";
-    $arr = mysqli_query($link,$sql);
-    $res = mysqli_fetch_all($arr);
+
     echo '<pre>';
     print_r($res);
     echo '</pre>';
